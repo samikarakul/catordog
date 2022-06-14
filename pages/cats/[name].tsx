@@ -1,0 +1,56 @@
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import {GetCats, GetCatByName, GetDogs} from "../../ApiCalls";
+import {Cutie} from "../../types/interfaces"
+import Image from "next/image";
+import {useEffect, useState} from "react";
+import CutieCompetition from "../../components/CutieCompetition";
+
+export const getStaticPaths: GetStaticPaths = async() => {
+    const cats = await GetCats();
+    const paths = cats.map((cat:Cutie) => {
+        return {
+            params: { name:cat.url},
+        }
+    })
+    return { paths, fallback:false }
+}
+export const getStaticProps: GetServerSideProps = async(context) => {
+    const tmpName = typeof(context.params!.name) == "object" ? context.params!.name[0] : context.params!.name
+    const cat:Cutie = await GetCatByName(tmpName?.split("-").join(" "))
+    const tmpDogs = await GetDogs();
+
+    return{
+      props: {
+        name: cat.name,
+        image_link: cat.image_link,
+        dogs: tmpDogs
+      }
+    }
+  }
+  
+const Cat = ({name, image_link, dogs} : {name:string, image_link: string, dogs: Cutie[]}) => {
+ 
+  const [currentDog, setCurrentDog] = useState<Cutie>({name, image_link});
+
+  const endCompetition = () => {
+    alert("NOT MEOW AT ALL")
+  }
+  const changeDog = () => {
+    const number = Math.floor(Math.random() * dogs.length - 1);
+    const dog = dogs[number > 0 ? number : 0]
+    setCurrentDog(dog)
+  }
+
+  useEffect(() => {
+    changeDog();
+  }, [dogs])
+  return (
+    <div>
+      <CutieCompetition image_link={image_link} changeCutie={changeDog} currentCutie={currentDog} endCompetition={endCompetition}/>
+    </div>
+  )
+}
+
+
+
+export default Cat

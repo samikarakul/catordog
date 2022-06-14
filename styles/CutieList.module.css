@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+.cutieContainer{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+
+}
+.cutieContainer div{
+    margin: 2vh 2vw;
+    padding: 2vh 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 1px .5px 10px 3px gray, -1px -.5px 10px 3px gray;
+}
+
+.cutieContainer div p{
+    display: inline-block;
+    max-width: 200px;
+    overflow:hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    font-family: 'Caveat', cursive;
+    font-size: 1.1vw;
+}
+
+@media screen and (max-width: 900px) {
+    .cutieContainer{
+        grid-template-columns: 30% 30% 30%;
+        grid-column-gap: 2%;
+        margin-left: 3%;
+    }
+
+    .cutieContainer div p{
+        display: inline-block;
+        max-width: 200px;
+        overflow:hidden;
+        white-space: nowrap; 
+        text-overflow: ellipsis;
+        font-size: 2.5vw;
+    }
+}
+
+@media screen and (max-width: 500px){
+ .cutieContainer{
+    grid-template-columns: 90%;
+ }   
+ .cutieContainer div p{
+    font-size: 3vw;
+ }
+}
