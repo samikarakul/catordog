@@ -27,6 +27,10 @@ const Dogs = ({ dogs }: { dogs: Cutie[] }) => {
           align-items: center;
           margin-top: 3vh;
         }
+        h1{
+          margin-bottom: 3vh;
+        }
+
       `}
       </style>
     </div>

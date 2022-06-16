@@ -2,6 +2,7 @@ import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
 import {GetCats, GetCatByName, GetDogs} from "../../ApiCalls";
 import {Cutie} from "../../types/interfaces"
 import Image from "next/image";
+import CompetitionEndDirect from "../../components/CompetitionEndDirect";
 import {useEffect, useState} from "react";
 import CutieCompetition from "../../components/CutieCompetition";
 
@@ -31,9 +32,10 @@ export const getStaticProps: GetServerSideProps = async(context) => {
 const Cat = ({name, image_link, dogs} : {name:string, image_link: string, dogs: Cutie[]}) => {
  
   const [currentDog, setCurrentDog] = useState<Cutie>({name, image_link});
+  const [isCompetitionEnd, setIsCompetitionEnd] = useState(false);
 
   const endCompetition = () => {
-    alert("NOT MEOW AT ALL")
+    setIsCompetitionEnd(true)
   }
   const changeDog = () => {
     const number = Math.floor(Math.random() * dogs.length - 1);
@@ -46,6 +48,7 @@ const Cat = ({name, image_link, dogs} : {name:string, image_link: string, dogs: 
   }, [dogs])
   return (
     <div>
+      {isCompetitionEnd ?  <CompetitionEndDirect cutieType="cat" /> : ""}
       <CutieCompetition image_link={image_link} changeCutie={changeDog} currentCutie={currentDog} endCompetition={endCompetition}/>
     </div>
   )

@@ -3,8 +3,9 @@
 .cutieContainer{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-
+    width: 90vw;
 }
+
 .cutieContainer div{
     margin: 2vh 2vw;
     padding: 2vh 2vw;
@@ -15,6 +16,7 @@
     cursor: pointer;
     border-radius: 25px;
     box-shadow: 1px .5px 10px 3px gray, -1px -.5px 10px 3px gray;
+    background-color: #fff;
 }
 
 .cutieContainer div p{

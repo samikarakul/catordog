@@ -22,7 +22,6 @@ export default function Navbar() {
                     box-shadow: 0 1px 8px #ddd;
                     background-color: #fff;
                 }
-                
                 header li {
                     list-style: none;
                     display: inline-block;

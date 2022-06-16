@@ -8,7 +8,6 @@
 
 .buttonContainer a{
   display: block;
-  z-index:1;
   margin: 0 2vw;
   border: 1px solid black;
   padding: 5vh 4vw;
@@ -26,8 +25,7 @@
     flex-direction: column;
   }
   .buttonContainer a{
-    display: fle
-    x;
+    display: flex;
     justify-content:center;
     width: 60vw;
     padding: 5vh 5vw;

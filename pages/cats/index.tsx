@@ -18,6 +18,19 @@ const Cats = ({ cats }: { cats: Cutie[] }) => {
     <div>
       <h1>Choose your Cutie Cat!</h1>
       <CutieList cuties={cats} cutieType="cats"/>
+      <style jsx>
+      {`
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 3vh;
+        }
+        h1{
+          margin-bottom: 3vh;
+        }
+      `}
+      </style>
     </div>
 
 
