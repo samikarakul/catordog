@@ -10,14 +10,16 @@ export const getStaticPaths: GetStaticPaths = async() => {
     const cats = await GetCats();
     const paths = cats.map((cat:Cutie) => {
         return {
-            params: { name:cat.url},
+            params: { name:  cat.name.includes("-") ? cat.name.toLowerCase() : cat.url?.split("-").join(" ") },
         }
     })
     return { paths, fallback:false }
 }
 export const getStaticProps: GetServerSideProps = async(context) => {
+  console.log(context.params!.name)
     const tmpName = typeof(context.params!.name) == "object" ? context.params!.name[0] : context.params!.name
-    const cat:Cutie = await GetCatByName(tmpName?.split("-").join(" "))
+
+    const cat:Cutie = await GetCatByName(tmpName)
     const tmpDogs = await GetDogs();
 
     return{
