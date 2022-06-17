@@ -9,3 +9,8 @@ And if you choose dog you will keep comparing your cute doggie with lots of cute
 
 
 Lets test!
+
+
+Used APIs:
+ - https://api-ninjas.com/api/cats
+ - https://api-ninjas.com/api/dogs 
