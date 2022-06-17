@@ -13,7 +13,7 @@ const Cats = ({cutieType}: {cutieType:string}) => {
     return (
         <div className="toast">
             <div>
-                {cutieType == "cat" ?  <Image src={GRUMPY_CAT} width="200" height="200"/> : <Image src={SAD_DOG} width="200" height="200"/>}
+                {cutieType == "cat" ?  <Image src={GRUMPY_CAT} width="200" height="200" alt=""/> : <Image src={SAD_DOG} width="200" height="200" alt=""/>}
             </div>
             <style jsx>
             {`

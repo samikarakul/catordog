@@ -15,7 +15,7 @@ const Cats = ({ cuties, cutieType }: { cuties: Cutie[], cutieType: string }) => 
         {cuties.map((cutie:Cutie) => (
           <div key={cutie.name} onClick={() => router.push('/'+cutieType+'/'+cutie.name.split(' ').join("-").toLowerCase())}>
             <p>{cutie.name}</p>
-            <Image src={cutie.image_link} width="200" height="200"/>
+            <Image src={cutie.image_link} width="200" height="200" alt=""/>
           </div>
         ))}
 

@@ -10,14 +10,15 @@ export async function GetCats(){
                 headers: requestHeaders,
             }).then(res => res.json()).catch(err => console.log(err))
 
-    console.log(process.env.SECRET_API_KEY)
-    cats = cats.map((c:Cutie) => {
-        return {
-            url: c.name.split(" ").join("-").toLowerCase(),
-            name: c.name,
-            image_link: c.image_link
-        };
-    })
+    if(cats){
+        cats = cats.map((c:Cutie) => {
+            return {
+                url: c.name.split(" ").join("-").toLowerCase(),
+                name: c.name,
+                image_link: c.image_link
+            };
+        })
+    }
     return cats;
 }
 export async function GetCatByName(name:string | undefined){
@@ -38,13 +39,15 @@ export async function GetDogs(){
                 headers: requestHeaders,
             }).then(res => res.json()).catch(err => console.log(err))
 
-    dogs = dogs.map((c:Cutie) => {
-        return {
-            url: c.name.split(" ").join("-").toLowerCase(),
-            name: c.name,
-            image_link: c.image_link
-        };
-    })
+    if(dogs){
+        dogs = dogs.map((c:Cutie) => {
+            return {
+                url: c.name.split(" ").join("-").toLowerCase(),
+                name: c.name,
+                image_link: c.image_link
+            };
+        })
+    }
     return dogs;
 }
 

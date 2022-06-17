@@ -5,8 +5,8 @@ function CutieCompetition({image_link, changeCutie, currentCutie, endCompetition
                         {image_link:string, changeCutie: () => void , currentCutie:Cutie, endCompetition: () => void}) {
   return (
     <div>
-        <button><Image src={image_link} width="300" height="300" onClick={changeCutie} layout="responsive"/></button>
-        {currentCutie ? <button><Image src={currentCutie.image_link} width="300" height="300" onClick={endCompetition}/></button> : ""}
+        <button><Image src={image_link} width="300" height="300" onClick={changeCutie} layout="responsive" alt=""/></button>
+        {currentCutie ? <button><Image src={currentCutie.image_link} width="300" height="300" onClick={endCompetition} alt=""/></button> : ""}
 
         <style jsx>
         {`
