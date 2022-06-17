@@ -18,4 +18,4 @@ Used APIs:
 
 You can test it! https://catordog.vercel.app/
 
-# Homepage design is temporary because i still can't decide.
+# Homepage design is temporary.
