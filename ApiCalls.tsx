@@ -4,6 +4,7 @@ const requestHeaders: HeadersInit = new Headers();
 requestHeaders.set("X-Api-Key", process.env.SECRET_API_KEY!)
 requestHeaders.set('Content-Type', 'application/json')
 
+
 export async function GetCats(){
     let cats = await fetch("https://api.api-ninjas.com/v1/cats?shedding=3", {
                 method: "GET",
@@ -19,6 +20,7 @@ export async function GetCats(){
             };
         })
     }
+
     return cats;
 }
 export async function GetCatByName(name:string | undefined){
@@ -31,6 +33,18 @@ export async function GetCatByName(name:string | undefined){
         name: cat[0].name,
         image_link: cat[0].image_link
     };
+}
+export async function GetCatNames(){
+    let cats = await fetch("https://api.api-ninjas.com/v1/cats?shedding=3", {
+        method: "GET",
+        headers: requestHeaders,
+    }).then(res => res.json()).catch(err => console.log(err))
+
+    if(cats){
+        cats = cats.map((c:Cutie) => c.name.toLowerCase(), )
+    }
+
+    return cats;
 }
 
 export async function GetDogs(){
@@ -47,6 +61,7 @@ export async function GetDogs(){
                 image_link: c.image_link
             };
         })
+
     }
     return dogs;
 }
@@ -61,4 +76,17 @@ export async function GetDogByName(name:string |undefined){
         name: dog[0].name,
         image_link: dog[0].image_link
     };
+}
+
+export async function GetDogNames(){
+    let dogs = await fetch("https://api.api-ninjas.com/v1/dogs?shedding=3", {
+        method: "GET",
+        headers: requestHeaders,
+    }).then(res => res.json()).catch(err => console.log(err))
+
+    if(dogs){
+        dogs = dogs.map((c:Cutie) => c.name, )
+    }
+
+    return dogs;
 }

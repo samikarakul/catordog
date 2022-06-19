@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import {GetDogs, GetDogByName, GetCats} from "../../ApiCalls";
+import {GetDogs, GetDogByName, GetCats, GetDogNames} from "../../ApiCalls";
 import {Cutie} from "../../types/interfaces"
 import Image from "next/image";
 import CompetitionEndDirect from "../../components/CompetitionEndDirect";
@@ -17,7 +17,9 @@ export const getStaticPaths: GetStaticPaths = async() => {
 }
 
 export const getStaticProps: GetStaticProps = async(context) => {
-  const tmpName = typeof(context.params!.name) == "object" ? context.params!.name[0] : context.params!.name
+  let tmpName = typeof(context.params!.name) == "object" ? context.params!.name[0] : context.params!.name
+  const cats = await GetDogNames();
+  if(tmpName && !cats.includes(tmpName)) tmpName = tmpName.split("-").join(" ")
   const dog:Cutie = await GetDogByName(tmpName?.split("-").join(" "))
   const tmpCats = await GetCats();
 

@@ -1,5 +1,5 @@
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
-import {GetCats, GetCatByName, GetDogs} from "../../ApiCalls";
+import {GetCats, GetCatByName, GetDogs, GetCatNames} from "../../ApiCalls";
 import {Cutie} from "../../types/interfaces"
 import Image from "next/image";
 import CompetitionEndDirect from "../../components/CompetitionEndDirect";
@@ -10,16 +10,17 @@ export const getStaticPaths: GetStaticPaths = async() => {
     const cats = await GetCats();
     const paths = cats.map((cat:Cutie) => {
         return {
-            params: { name:  cat.name.includes("-") ? cat.name.toLowerCase() : cat.url?.split("-").join(" ") },
+            params: { name: cat.url },
         }
     })
     return { paths, fallback:false }
 }
 export const getStaticProps: GetServerSideProps = async(context) => {
-  console.log(context.params!.name)
-    const tmpName = typeof(context.params!.name) == "object" ? context.params!.name[0] : context.params!.name
-
-    const cat:Cutie = await GetCatByName(tmpName)
+    let tmpName = typeof(context.params!.name) == "object" ? context.params!.name[0] : context.params!.name
+  
+    const cats = await GetCatNames();
+    if(tmpName && !cats.includes(tmpName)) tmpName = tmpName.split("-").join(" ")
+    const cat:Cutie = await GetCatByName(tmpName);
     const tmpDogs = await GetDogs();
 
     return{
