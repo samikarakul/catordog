@@ -4,15 +4,14 @@ import { Cutie } from "../types/interfaces"
 
 function CutieCompetition(
     {image_link, cutieName, changeCutie, currentCutie, endCompetition} : 
-                        {image_link:string, cutieName:string, changeCutie: () => void , currentCutie:Cutie, endCompetition: () => void, 
-                            }
+        {image_link:string, cutieName:string, changeCutie: () => void , currentCutie:Cutie, endCompetition: () => void,}
                             ) {
 
     const [count, setCount] = useState(0);
 
   return (
     <div className="cutie-competition-container">
-        {count ? <p>You chose your cutie {count} times</p> : <p>You didn't choose any cutie yet...</p>}
+        {count ? <p>You chose your cutie {count} times</p> : <p>{"You didn't choose any cutie yet..."}</p>}
         <div className="competition-image-button-container">
             
             <div>
