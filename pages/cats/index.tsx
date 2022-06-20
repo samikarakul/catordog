@@ -2,6 +2,7 @@ import type { GetServerSideProps, GetStaticProps } from 'next'
 import {GetCats} from "../../ApiCalls";
 import {Cutie} from "../../types/interfaces"
 import CutieList from "../../components/CutieList";
+import Head from 'next/head';
 
 export const getServerSideProps: GetServerSideProps = async() => {
   const cats = await GetCats();
@@ -16,7 +17,10 @@ export const getServerSideProps: GetServerSideProps = async() => {
 const Cats = ({ cats }: { cats: Cutie[] }) => {
   return (
     <div>
-      <h1>Choose your Cutie Cat!</h1>
+      <Head>
+        <title>Choose your Cutie Cat!</title>
+      </Head>
+      <h2>Choose your Cutie Cat!</h2>
       <CutieList cuties={cats} cutieType="cats"/>
       <style jsx>
       {`
@@ -26,7 +30,8 @@ const Cats = ({ cats }: { cats: Cutie[] }) => {
           align-items: center;
           margin-top: 3vh;
         }
-        h1{
+        h2{
+
           margin-bottom: 3vh;
         }
       `}

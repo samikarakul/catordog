@@ -11,8 +11,11 @@
   margin: 0 2vw;
   border: 1px solid black;
   padding: 5vh 4vw;
+  transform: box-shadow 1s ease-in;
 }
-
+.buttonContainer a:hover{
+  box-shadow: .7px .7px 1px 1px black;
+}
 @media screen and (max-width: 600px) {
  .buttonContainer a{
   margin: 0 6vw;

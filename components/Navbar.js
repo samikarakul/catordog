@@ -26,8 +26,12 @@ export default function Navbar() {
                     list-style: none;
                     display: inline-block;
                     padding: 0 20px;
+                    transition: 300ms;
+                    border-bottom: 1px solid transparent;
                 }
-                
+                header li:hover {
+                    border-color: black;
+                }
                 #nav-title {
                     margin-right: auto;
                     font-size: 1.5em;
@@ -39,10 +43,17 @@ export default function Navbar() {
                     transition: all 0.3s ease 0s;
                 }
                 
+                @media screen and (max-width: 400px)
+                {
+                    header li {
+                        padding: 0 2vw;
+                    }
+                }
             `}
         </style>
     </header>
     
     )
 }
+
 

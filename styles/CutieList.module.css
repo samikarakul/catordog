@@ -4,6 +4,7 @@
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     width: 90vw;
+    margin-bottom: 5vh;
 }
 
 .cutieContainer div{
@@ -16,9 +17,12 @@
     cursor: pointer;
     border-radius: 25px;
     box-shadow: 1px .5px 10px 3px gray, -1px -.5px 10px 3px gray;
+    transition: box-shadow .1s ease-in;
     background-color: #fff;
 }
-
+.cutieContainer div:hover{
+    box-shadow: 1px 1px 10px 5px gray, -1px -1px 10px 5px gray;
+}
 .cutieContainer div p{
     display: inline-block;
     max-width: 200px;

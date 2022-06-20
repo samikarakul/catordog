@@ -5,6 +5,7 @@ import Image from "next/image";
 import CompetitionEndDirect from "../../components/CompetitionEndDirect";
 import {useEffect, useState} from "react";
 import CutieCompetition from "../../components/CutieCompetition";
+import Head from "next/head";
 
 export const getStaticPaths: GetStaticPaths = async() => {
     const cats = await GetCats();
@@ -46,13 +47,18 @@ const Cat = ({name, image_link, dogs} : {name:string, image_link: string, dogs: 
     setCurrentDog(dog)
   }
 
+
   useEffect(() => {
     changeDog();
   }, [dogs])
   return (
     <div>
+      <Head>
+        <title>{name} or {currentDog.name}</title>
+      </Head>
       {isCompetitionEnd ?  <CompetitionEndDirect cutieType="cat" /> : ""}
-      <CutieCompetition image_link={image_link} changeCutie={changeDog} currentCutie={currentDog} endCompetition={endCompetition}/>
+      <CutieCompetition image_link={image_link} changeCutie={changeDog} 
+        currentCutie={currentDog} endCompetition={endCompetition} cutieName={name} />
     </div>
   )
 }
