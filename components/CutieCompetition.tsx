@@ -11,7 +11,7 @@ function CutieCompetition(
 
   return (
     <div className="cutie-competition-container">
-        {count ? <p>You chose your cutie {count} times</p> : <p>{"You didn't choose any cutie yet..."}</p>}
+        {count ?  count==1 ?<p>You chose your cutie {count} time</p> : <p>You chose your cutie {count} times</p> : <p>{"You didn't choose any cutie yet..."}</p>}
         <div className="competition-image-button-container">
             
             <div>
